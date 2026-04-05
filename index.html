@@ -207,9 +207,11 @@
     .btn--primary {
       background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
       color: #fff;
-      box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.2), 0 12px 40px -8px var(--accent-glow);
+      animation: cta-pulse 3.2s ease-in-out infinite;
     }
-    .btn--primary:hover {
+    .btn--primary:hover,
+    .btn--primary:focus-visible {
+      animation: none;
       transform: translateY(-2px);
       box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.35), 0 18px 50px -10px var(--accent-glow);
     }
@@ -225,7 +227,85 @@
     }
     .btn--block { width: 100%; }
 
-    main { position: relative; z-index: 1; }
+    #network-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    main { position: relative; z-index: 2; }
+
+    @keyframes cta-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.22), 0 12px 40px -8px var(--accent-glow);
+      }
+      50% {
+        box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.4), 0 14px 52px -4px rgba(139, 92, 246, 0.42);
+      }
+    }
+    @keyframes cursor-blink {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .hero-intro {
+      margin-bottom: 1.25rem;
+    }
+    .hero-brand-line {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text);
+      min-height: 1.2em;
+    }
+    .hero-sub-line {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      min-height: 1.2em;
+    }
+    .type-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.95em;
+      margin-left: 2px;
+      background: var(--accent);
+      vertical-align: -0.05em;
+      animation: cursor-blink 1s step-end infinite;
+    }
+    .type-cursor--dim {
+      background: rgba(167, 139, 250, 0.6);
+    }
+    .type-cursor.is-hidden {
+      display: none;
+    }
+
+    h1.hero-value {
+      margin-top: 0.25rem;
+      min-height: 2.6em;
+    }
+    .hero-h1-accent {
+      color: var(--accent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn--primary { animation: none; }
+      .type-cursor { animation: none; opacity: 0; }
+      .card:hover,
+      .pillar:hover,
+      .metric:hover,
+      .step:hover {
+        transform: none;
+      }
+    }
     .section {
       padding: clamp(4.5rem, 12vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
     }
@@ -311,6 +391,12 @@
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .metric:hover {
+      border-color: rgba(167, 139, 250, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px -10px rgba(139, 92, 246, 0.2);
     }
     .metric strong {
       display: block;
@@ -385,11 +471,12 @@
       background: var(--glass);
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(20px);
-      transition: border-color 0.25s, transform 0.25s;
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
     }
     .pillar:hover {
-      border-color: rgba(167, 139, 250, 0.25);
-      transform: translateY(-3px);
+      border-color: rgba(167, 139, 250, 0.45);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px -12px rgba(139, 92, 246, 0.22), 0 0 0 1px rgba(167, 139, 250, 0.12);
     }
     .pillar-num {
       font-family: var(--font-display);
@@ -423,9 +510,13 @@
       border-radius: var(--radius);
       background: var(--bg-elevated);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: border-color 0.2s;
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
     }
-    .card:hover { border-color: rgba(167, 139, 250, 0.2); }
+    .card:hover {
+      border-color: rgba(167, 139, 250, 0.42);
+      transform: translateY(-8px);
+      box-shadow: 0 22px 55px -14px rgba(139, 92, 246, 0.28), 0 0 40px -20px rgba(167, 139, 250, 0.15);
+    }
     .card p {
       font-size: 0.875rem;
       color: var(--muted);
@@ -459,6 +550,7 @@
       border: 1px solid var(--glass-border);
       background: var(--glass);
       backdrop-filter: blur(12px);
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
     }
     .step::before {
       content: attr(data-step);
@@ -472,6 +564,11 @@
     .step p {
       font-size: 0.8125rem;
       color: var(--muted);
+    }
+    .step:hover {
+      border-color: rgba(167, 139, 250, 0.38);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 48px -14px rgba(139, 92, 246, 0.2), 0 0 36px -18px rgba(167, 139, 250, 0.12);
     }
 
     .contact-grid {
@@ -633,6 +730,7 @@
   <div class="noise" aria-hidden="true"></div>
   <div class="glow-orb" aria-hidden="true"></div>
   <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+  <canvas id="network-canvas" aria-hidden="true"></canvas>
 
   <header class="header">
     <a href="#inicio" class="logo" id="logo">
@@ -655,8 +753,17 @@
     <section class="section hero" id="inicio">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Consultoría de IA de alto nivel</p>
-          <h1>Activos digitales inteligentes. No presencia online: <span style="color: var(--accent);">ventaja operativa.</span></h1>
+          <div class="hero-intro">
+            <p class="hero-brand-line">
+              <span id="typed-brand"></span><span class="type-cursor" id="brand-cursor" aria-hidden="true"></span>
+            </p>
+            <p class="hero-sub-line">
+              <span id="typed-sub"></span><span class="type-cursor type-cursor--dim is-hidden" id="sub-cursor" aria-hidden="true"></span>
+            </p>
+          </div>
+          <h1 class="hero-value" id="hero-headline" aria-label="Activos digitales inteligentes. No presencia online: ventaja operativa.">
+            <span id="typed-h1-1"></span><span id="typed-h1-2" class="hero-h1-accent"></span><span class="type-cursor is-hidden" id="h1-cursor" aria-hidden="true"></span>
+          </h1>
           <p class="lead">Diseñamos e implementamos sistemas donde datos, automatización e IA trabajan bajo gobernanza. Cada propuesta pasa por <strong style="color: var(--text); font-weight: 600;">Auditoría de Viabilidad Técnica</strong> y <strong style="color: var(--text); font-weight: 600;">ROI proyectado</strong> antes de comprometer recursos.</p>
           <div class="hero-actions">
             <a href="#contacto" class="btn btn--primary">Auditoría de viabilidad técnica</a>
@@ -832,6 +939,198 @@
 
   <script>
     (function () {
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      var canvas = document.getElementById("network-canvas");
+      if (canvas && canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        var particles = [];
+        var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+        var t = 0;
+
+        function resizeNet() {
+          var W = window.innerWidth;
+          var H = window.innerHeight;
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.floor(W * dpr);
+          canvas.height = Math.floor(H * dpr);
+          canvas.style.width = W + "px";
+          canvas.style.height = H + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          var n = Math.min(88, Math.max(26, Math.floor((W * H) / 21000)));
+          particles = [];
+          for (var i = 0; i < n; i++) {
+            particles.push({
+              bx: Math.random() * W,
+              by: Math.random() * H,
+              ox: Math.random() * Math.PI * 2,
+              oy: Math.random() * Math.PI * 2,
+              r: 0.55 + Math.random() * 1.85
+            });
+          }
+        }
+
+        var rafId = 0;
+        function drawFrame(anim) {
+          var W = window.innerWidth;
+          var H = window.innerHeight;
+          if (anim) t += 0.014;
+          mouse.x += (mouse.tx - mouse.x) * 0.052;
+          mouse.y += (mouse.ty - mouse.y) * 0.052;
+          var cx = W * 0.5;
+          var cy = H * 0.5;
+          var mx = (mouse.x - cx) / Math.max(cx, 1);
+          var my = (mouse.y - cy) / Math.max(cy, 1);
+          ctx.clearRect(0, 0, W, H);
+          var maxD = W < 640 ? 112 : 158;
+          var pts = [];
+          var parallax = anim ? 62 : 0;
+          for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            var driftX = Math.sin(t * 0.38 + p.ox) * 22 + Math.cos(t * 0.22 + p.oy) * 13;
+            var driftY = Math.cos(t * 0.31 + p.oy) * 20 + Math.sin(t * 0.17 + p.ox) * 12;
+            pts.push({
+              x: p.bx + driftX + mx * parallax,
+              y: p.by + driftY + my * parallax,
+              r: p.r
+            });
+          }
+          var repelR = W < 640 ? 118 : 168;
+          for (var ri = 0; ri < pts.length; ri++) {
+            var dxm = pts[ri].x - mouse.x;
+            var dym = pts[ri].y - mouse.y;
+            var dm = Math.sqrt(dxm * dxm + dym * dym);
+            if (dm < repelR && dm > 0.5) {
+              var push = (1 - dm / repelR) * (W < 640 ? 22 : 34);
+              pts[ri].x += (dxm / dm) * push;
+              pts[ri].y += (dym / dm) * push;
+            }
+          }
+          for (var a = 0; a < pts.length; a++) {
+            for (var b = a + 1; b < pts.length; b++) {
+              var dx = pts[a].x - pts[b].x;
+              var dy = pts[a].y - pts[b].y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < maxD) {
+                var al = (1 - dist / maxD) * 0.28;
+                ctx.strokeStyle = "rgba(167, 139, 250, " + al.toFixed(3) + ")";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(pts[a].x, pts[a].y);
+                ctx.lineTo(pts[b].x, pts[b].y);
+                ctx.stroke();
+              }
+            }
+          }
+          for (var k = 0; k < pts.length; k++) {
+            ctx.fillStyle = "rgba(196, 181, 253, " + (0.14 + pts[k].r * 0.055) + ")";
+            ctx.beginPath();
+            ctx.arc(pts[k].x, pts[k].y, pts[k].r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        function loop() {
+          drawFrame(true);
+          rafId = requestAnimationFrame(loop);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            mouse.tx = e.clientX;
+            mouse.ty = e.clientY;
+          },
+          { passive: true }
+        );
+        document.addEventListener(
+          "touchmove",
+          function (e) {
+            if (e.touches[0]) {
+              mouse.tx = e.touches[0].clientX;
+              mouse.ty = e.touches[0].clientY;
+            }
+          },
+          { passive: true }
+        );
+        document.addEventListener(
+          "touchstart",
+          function (e) {
+            if (e.touches[0]) {
+              mouse.tx = e.touches[0].clientX;
+              mouse.ty = e.touches[0].clientY;
+            }
+          },
+          { passive: true }
+        );
+
+        window.addEventListener("resize", function () {
+          resizeNet();
+          if (reduceMotion) drawFrame(false);
+        });
+        resizeNet();
+        mouse.tx = window.innerWidth * 0.5;
+        mouse.ty = window.innerHeight * 0.4;
+        mouse.x = mouse.tx;
+        mouse.y = mouse.ty;
+
+        if (reduceMotion) {
+          drawFrame(false);
+        } else {
+          loop();
+        }
+      }
+
+      var brandEl = document.getElementById("typed-brand");
+      var subEl = document.getElementById("typed-sub");
+      var brandCur = document.getElementById("brand-cursor");
+      var subCur = document.getElementById("sub-cursor");
+      var h1aEl = document.getElementById("typed-h1-1");
+      var h1bEl = document.getElementById("typed-h1-2");
+      var h1Cur = document.getElementById("h1-cursor");
+      var lineBrand = "IA Soluciones Inteligentes";
+      var lineSub = "Consultoría de IA de alto nivel";
+      var lineH1a = "Activos digitales inteligentes. No presencia online: ";
+      var lineH1b = "ventaja operativa.";
+
+      function typeLine(el, text, delay, i, done) {
+        i = i || 0;
+        if (i < text.length) {
+          el.textContent += text.charAt(i);
+          setTimeout(function () {
+            typeLine(el, text, delay, i + 1, done);
+          }, delay + Math.random() * 22);
+        } else if (done) done();
+      }
+
+      if (brandEl && subEl) {
+        if (reduceMotion) {
+          brandEl.textContent = lineBrand;
+          subEl.textContent = lineSub;
+          if (h1aEl) h1aEl.textContent = lineH1a;
+          if (h1bEl) h1bEl.textContent = lineH1b;
+          if (brandCur) brandCur.classList.add("is-hidden");
+          if (subCur) subCur.classList.add("is-hidden");
+          if (h1Cur) h1Cur.classList.add("is-hidden");
+        } else {
+          typeLine(brandEl, lineBrand, 32, 0, function () {
+            if (brandCur) brandCur.classList.add("is-hidden");
+            if (subCur) subCur.classList.remove("is-hidden");
+            typeLine(subEl, lineSub, 22, 0, function () {
+              if (subCur) subCur.classList.add("is-hidden");
+              if (h1aEl && h1bEl) {
+                if (h1Cur) h1Cur.classList.remove("is-hidden");
+                typeLine(h1aEl, lineH1a, 10, 0, function () {
+                  typeLine(h1bEl, lineH1b, 12, 0, function () {
+                    if (h1Cur) h1Cur.classList.add("is-hidden");
+                  });
+                });
+              }
+            });
+          });
+        }
+      }
+
       var form = document.getElementById("form-contact");
       var navToggle = document.getElementById("nav-open");
       if (form) {
