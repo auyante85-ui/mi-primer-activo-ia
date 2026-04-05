@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
   <title>IA Soluciones Inteligentes | Consultoría de IA y Activos Digitales</title>
   <meta name="description" content="Consultoría de inteligencia artificial para organizaciones exigentes. Auditoría de viabilidad técnica, ROI proyectado y sistemas de alto rendimiento. Valencia y operación internacional.">
   <meta name="robots" content="index, follow">
@@ -188,6 +189,10 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
+
+    .nav-links--drawer {
+      display: none;
+    }
 
     .btn {
       display: inline-flex;
@@ -646,6 +651,8 @@
     }
 
     footer {
+      position: relative;
+      z-index: 3;
       padding: 2rem clamp(1.25rem, 4vw, 2.5rem) calc(2rem + var(--safe-bottom));
       border-top: 1px solid var(--glass-border);
       display: flex;
@@ -674,7 +681,7 @@
       position: fixed;
       bottom: calc(1.25rem + var(--safe-bottom));
       right: 1.25rem;
-      z-index: 90;
+      z-index: 101;
       width: 52px;
       height: 52px;
       border-radius: 50%;
@@ -693,11 +700,14 @@
 
     @media (max-width: 768px) {
       .nav-burger { display: flex; }
-      .nav-links {
+      .nav-links--desktop { display: none; }
+      .nav-links--drawer {
+        display: flex;
         position: fixed;
         top: var(--nav-h);
         left: 0;
         right: 0;
+        z-index: 99;
         flex-direction: column;
         align-items: stretch;
         padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem;
@@ -708,20 +718,22 @@
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
+        pointer-events: none;
         transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
       }
-      .nav-links li { border-bottom: 1px solid var(--glass-border); }
-      .nav-links li:last-child { border-bottom: none; padding-top: 0.75rem; }
-      .nav-links a {
+      .nav-links--drawer li { border-bottom: 1px solid var(--glass-border); }
+      .nav-links--drawer li:last-child { border-bottom: none; padding-top: 0.75rem; }
+      .nav-links--drawer a {
         display: block;
         padding: 0.9rem 0;
         font-size: 0.9375rem;
       }
-      .nav-links .btn { width: 100%; margin-top: 0.25rem; }
-      .nav-toggle:checked ~ .nav-links {
+      .nav-links--drawer .btn { width: 100%; margin-top: 0.25rem; }
+      .nav-toggle:checked ~ .nav-links--drawer {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
       }
     }
   </style>
@@ -732,22 +744,28 @@
   <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
   <canvas id="network-canvas" aria-hidden="true"></canvas>
 
+  <input type="checkbox" id="nav-open" class="nav-toggle" aria-label="Abrir menú">
   <header class="header">
     <a href="#inicio" class="logo" id="logo">
       <span>IA Soluciones Inteligentes</span>
       <span>Consultoría de IA</span>
     </a>
-    <input type="checkbox" id="nav-open" class="nav-toggle" aria-label="Abrir menú">
     <label for="nav-open" class="nav-burger" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
     </label>
-    <ul class="nav-links">
+    <ul class="nav-links nav-links--desktop">
       <li><a href="#pilares">Enfoque</a></li>
       <li><a href="#servicios">Capacidades</a></li>
       <li><a href="#metodo">Método</a></li>
       <li><a href="#contacto" class="btn btn--primary">Solicitar auditoría</a></li>
     </ul>
   </header>
+  <ul class="nav-links nav-links--drawer" aria-label="Navegación principal">
+    <li><a href="#pilares">Enfoque</a></li>
+    <li><a href="#servicios">Capacidades</a></li>
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#contacto" class="btn btn--primary">Solicitar auditoría</a></li>
+  </ul>
 
   <main>
     <section class="section hero" id="inicio">
