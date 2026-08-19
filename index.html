@@ -243,12 +243,12 @@ footer p{color:var(--mid);font-size:.75rem;}
   </div>
 </section>
 
-<section id="contacto">
-    <div class="cont-w">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+<section id="contacto" style="padding: 40px 0;">
+    <div class="cont-w" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: start;">
         
-        <!-- Bloque de Información de Contacto Izquierda -->
-        <div>
+        <!-- Bloque Izquierdo: Datos de contacto -->
+        <div style="flex: 1 1 320px; min-width: 280px;">
           <span style="color: #a855f7; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Hablemos</span>
           <h2 style="font-size: 2.2rem; margin: 10px 0 20px 0;">¿Empezamos juntos?</h2>
           <p style="color: #cbd5e1; margin-bottom: 30px;">
@@ -282,27 +282,27 @@ footer p{color:var(--mid);font-size:.75rem;}
           </div>
         </div>
 
-        <!-- Formulario con Formspree a la Derecha -->
-        <form action="https://formspree.io/f/xaewlpoz" method="POST" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); width: 100%; box-sizing: border-box;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-            <div>
+        <!-- Bloque Derecho: Formulario adaptativo -->
+        <form action="https://formspree.io/f/xaewlpoz" method="POST" style="flex: 1 1 380px; min-width: 280px; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box;">
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+            <div style="flex: 1 1 140px;">
               <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1;">Nombre *</label>
-              <input type="text" name="nombre" placeholder="Tu nombre" required style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
+              <input type="text" name="nombre" placeholder="Tu nombre" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
             </div>
-            <div>
+            <div style="flex: 1 1 140px;">
               <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1;">Email *</label>
-              <input type="email" name="email" placeholder="Tu correo electrónico" required style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
+              <input type="email" name="email" placeholder="Tu correo electrónico" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
             </div>
           </div>
 
           <div style="margin-bottom: 15px;">
             <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1;">Empresa</label>
-            <input type="text" name="empresa" placeholder="Tu empresa o negocio" style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
+            <input type="text" name="empresa" placeholder="Tu empresa o negocio" style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
           </div>
 
           <div style="margin-bottom: 15px;">
             <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1;">Servicio de interés</label>
-            <select name="servicio" required style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
+            <select name="servicio" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;">
               <option value="" disabled selected>Selecciona un servicio</option>
               <option value="Consultoría Digital">Consultoría Digital</option>
               <option value="Gestión de Redes Sociales">Gestión de Redes Sociales</option>
@@ -315,7 +315,7 @@ footer p{color:var(--mid);font-size:.75rem;}
 
           <div style="margin-bottom: 20px;">
             <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1;">Mensaje *</label>
-            <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required style="width:100%; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;"></textarea>
+            <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; box-sizing: border-box;"></textarea>
           </div>
 
           <button type="submit" style="width:100%; padding:14px; border-radius:30px; background:linear-gradient(90deg, #a855f7, #6366f1); color:#fff; border:none; font-weight:600; cursor:pointer;">Enviar mensaje →</button>
@@ -324,7 +324,6 @@ footer p{color:var(--mid);font-size:.75rem;}
       </div>
     </div>
   </section>
-
 <footer>
   <div class="flogo">IA Soluciones Inteligentes</div>
   <div class="flinks">
