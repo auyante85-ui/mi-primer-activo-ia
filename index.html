@@ -8,36 +8,42 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     body { background-color: #0b071e; color: #ffffff; line-height: 1.6; }
     
-    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(11, 7, 30, 0.9); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 7, 30, 0.9); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .flogo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: #fff; }
     .flogo img { width: 36px; height: 36px; object-fit: contain; }
     .flinks a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-size: 0.95rem; }
     .btn-contact { background: linear-gradient(90deg, #a855f7, #6366f1); padding: 10px 24px; border-radius: 20px; color: #fff; text-decoration: none; font-weight: 600; }
 
-    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 60px 8%; gap: 40px; }
-    .hero-text { flex: 1 1 450px; }
-    .hero-text h1 { font-size: 3rem; margin: 15px 0; line-height: 1.2; }
+    .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; padding: 60px 5%; gap: 40px; }
+    .hero-text h1 { font-size: 2.8rem; margin: 15px 0; line-height: 1.2; }
     .hero-text p { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 30px; }
-    .hero-img { flex: 1 1 350px; display: flex; justify-content: center; }
-    .hero-img img { max-width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    .hero-img { display: flex; justify-content: center; }
+    .hero-img img { max-width: 100%; height: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
 
-    .contact-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
-    .contact-info { flex: 1 1 400px; min-width: 300px; }
-    .contact-form { flex: 1 1 450px; min-width: 300px; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    /* SECCION DE CONTACTO EN 2 COLUMNAS PERFECTAS */
+    .contact-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 5%; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 
     .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+    .contact-form { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1; }
     .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff; box-sizing: border-box; }
-    .form-row { display: flex; gap: 15px; flex-wrap: wrap; }
-    .form-row .form-group { flex: 1 1 180px; }
-    
-    footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 30px 8%; border-top: 1px solid rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; gap: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 30px 5%; border-top: 1px solid rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; gap: 20px; }
+
+    /* REGLA PARA MOVILES PANTALLA PEQUEÑA */
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- HEADER CON LOGO -->
+  <!-- HEADER -->
   <header>
     <div class="flogo">
       <img src="Perfil.jpg" alt="Logo" onerror="this.style.display='none'">
@@ -50,7 +56,7 @@
     </div>
   </header>
 
-  <!-- HERO SECCION PRINCIPAL CON FOTO DE PERFIL -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
       <span style="color: #a855f7; font-weight: 600; text-transform: uppercase;">◆ Transformación Digital</span>
@@ -62,82 +68,84 @@
     </div>
   </section>
 
-  <!-- SECCION CONTACTO COMPLETA (2 COLUMNAS) -->
+  <!-- CONTACTO EN 2 COLUMNAS BALANCEADAS -->
   <section id="contacto">
-    <div class="contact-container">
-      
-      <!-- COLUMNA IZQUIERDA: DATOS -->
-      <div class="contact-info">
-        <span style="color: #a855f7; font-weight: 600; text-transform: uppercase;">HABLEMOS</span>
-        <h2 style="font-size: 2.2rem; margin: 10px 0 20px 0;">¿Empezamos juntos?</h2>
-        <p style="color: #cbd5e1; margin-bottom: 30px;">
-          La primera consulta es <strong style="color: #c084fc;">completamente gratuita</strong>. En menos de 24 horas tendrás una propuesta personalizada para tu negocio.
-        </p>
+    <div class="contact-wrapper">
+      <div class="contact-grid">
+        
+        <!-- COLUMNA 1: CONTACTO -->
+        <div class="contact-info">
+          <span style="color: #a855f7; font-weight: 600; text-transform: uppercase;">HABLEMOS</span>
+          <h2 style="font-size: 2.2rem; margin: 10px 0 20px 0;">¿Empezamos juntos?</h2>
+          <p style="color: #cbd5e1; margin-bottom: 30px;">
+            La primera consulta es <strong style="color: #c084fc;">completamente gratuita</strong>. En menos de 24 horas tendrás una propuesta personalizada para tu negocio.
+          </p>
 
-        <div class="card">
-          <span style="font-size: 1.2rem;">📞</span>
-          <div>
-            <div style="font-size: 0.75rem; color: #94a3b8;">Teléfono / WhatsApp</div>
-            <div style="font-weight: 600;">677 330 035</div>
+          <div class="card">
+            <span style="font-size: 1.2rem;">📞</span>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">Teléfono / WhatsApp</div>
+              <div style="font-weight: 600;">677 330 035</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <span style="font-size: 1.2rem;">✉️</span>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">Email</div>
+              <div style="font-weight: 600;">info@iasolucionesinteligentes.es</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <span style="font-size: 1.2rem;">📍</span>
+            <div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">Ubicación</div>
+              <div style="font-weight: 600;">Valencia, España</div>
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <span style="font-size: 1.2rem;">✉️</span>
-          <div>
-            <div style="font-size: 0.75rem; color: #94a3b8;">Email</div>
-            <div style="font-weight: 600;">info@iasolucionesinteligentes.es</div>
+        <!-- COLUMNA 2: FORMULARIO -->
+        <form class="contact-form" action="https://formspree.io/f/xaewlpoz" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre *</label>
+              <input type="text" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" placeholder="Tu correo electrónico" required>
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <span style="font-size: 1.2rem;">📍</span>
-          <div>
-            <div style="font-size: 0.75rem; color: #94a3b8;">Ubicación</div>
-            <div style="font-weight: 600;">Valencia, España</div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" name="empresa" placeholder="Tu empresa o negocio">
           </div>
-        </div>
+
+          <div class="form-group">
+            <label>Servicio de interés</label>
+            <select name="servicio" required>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option value="Consultoría Digital">Consultoría Digital</option>
+              <option value="Gestión de Redes Sociales">Gestión de Redes Sociales</option>
+              <option value="Marketing Digital">Marketing Digital</option>
+              <option value="Pack Visibilidad Online">Pack Visibilidad Online</option>
+              <option value="Proyecto Integral PYME">Proyecto Integral PYME</option>
+              <option value="Formación Empresarial">Formación Empresarial</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Mensaje *</label>
+            <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" style="width:100%; padding:14px; border-radius:30px; background:linear-gradient(90deg, #a855f7, #6366f1); color:#fff; border:none; font-weight:600; cursor:pointer;">Enviar mensaje →</button>
+        </form>
+
       </div>
-
-      <!-- COLUMNA DERECHA: FORMULARIO -->
-      <form class="contact-form" action="https://formspree.io/f/xaewlpoz" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre *</label>
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label>Email *</label>
-            <input type="email" name="email" placeholder="Tu correo electrónico" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Empresa</label>
-          <input type="text" name="empresa" placeholder="Tu empresa o negocio">
-        </div>
-
-        <div class="form-group">
-          <label>Servicio de interés</label>
-          <select name="servicio" required>
-            <option value="" disabled selected>Selecciona un servicio</option>
-            <option value="Consultoría Digital">Consultoría Digital</option>
-            <option value="Gestión de Redes Sociales">Gestión de Redes Sociales</option>
-            <option value="Marketing Digital">Marketing Digital</option>
-            <option value="Pack Visibilidad Online">Pack Visibilidad Online</option>
-            <option value="Proyecto Integral PYME">Proyecto Integral PYME</option>
-            <option value="Formación Empresarial">Formación Empresarial</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Mensaje *</label>
-          <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
-        </div>
-
-        <button type="submit" style="width:100%; padding:14px; border-radius:30px; background:linear-gradient(90deg, #a855f7, #6366f1); color:#fff; border:none; font-weight:600; cursor:pointer;">Enviar mensaje →</button>
-      </form>
-
     </div>
   </section>
 
