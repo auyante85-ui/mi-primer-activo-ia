@@ -260,13 +260,13 @@ footer p{color:var(--mid);font-size:.75rem;}
         <div class="form">
           <form action="https://formspree.io/f/xaewlpoz" method="POST">
           <div class="frow">
-            <div class="fg"><label>Nombre *</label><input type="text" placeholder="Tu nombre"></div>
-            <div class="fg"><label>Email *</label><input type="email" placeholder="tu@email.com"></div>
+            <input type="text" name="name" placeholder="Tu nombre">
+            <input type="email" name="email" placeholder="tu@email.com">
           </div>
-          <div class="fg"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa"></div>
+          <input type="text" name="company" placeholder="Nombre de tu empresa">
           <div class="fg">
             <label>Servicio de interés</label>
-            <select>
+            <select name="service">
               <option value="">Selecciona un servicio</option>
               <option>Consultoría Digital</option>
               <option>Gestión de Redes Sociales</option>
@@ -276,7 +276,7 @@ footer p{color:var(--mid);font-size:.75rem;}
               <option>Formación Empresarial</option>
             </select>
           </div>
-          <div class="fg"><label>Mensaje *</label><textarea rows="4" placeholder="Cuéntanos sobre tu negocio y qué necesitas..."></textarea></div>
+          <textarea rows="4" name="message" placeholder="Cuéntanos sobre tu negocio y qué necesitas..."></textarea>
           <button class="btn-send" type="submit">Enviar mensaje →</button>
         </div>
         </form>
