@@ -6,48 +6,66 @@
   <title>IA Soluciones Inteligentes</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background-color: #0b071e; color: #ffffff; line-height: 1.6; }
+    body { background-color: #08031a; color: #ffffff; line-height: 1.6; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0); background-size: 24px 24px; }
     
-    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 7, 30, 0.9); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .flogo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: #fff; }
-    .flogo img { width: 36px; height: 36px; object-fit: contain; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(8, 3, 26, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .flogo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: #fff; letter-spacing: 0.5px; }
+    .flogo svg { width: 32px; height: 32px; }
     .flinks a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-size: 0.95rem; }
     .btn-contact { background: linear-gradient(90deg, #a855f7, #6366f1); padding: 10px 24px; border-radius: 20px; color: #fff; text-decoration: none; font-weight: 600; }
 
-    .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; padding: 60px 5%; gap: 40px; }
-    .hero-text h1 { font-size: 2.8rem; margin: 15px 0; line-height: 1.2; }
-    .hero-text p { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 30px; }
-    .hero-img { display: flex; justify-content: center; }
-    .hero-img img { max-width: 100%; height: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    .hero { padding: 80px 8% 60px 8%; max-width: 1200px; margin: 0 auto; }
+    .hero-tag { display: inline-block; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); color: #c084fc; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+    .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 span { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #94a3b8; font-size: 1.15rem; max-width: 600px; margin-bottom: 35px; }
+    
+    .hero-btns { display: flex; gap: 15px; margin-bottom: 60px; }
+    .btn-purple { background: linear-gradient(90deg, #a855f7, #6366f1); padding: 12px 28px; border-radius: 25px; color: #fff; text-decoration: none; font-weight: 600; }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.2); padding: 12px 28px; border-radius: 25px; color: #fff; text-decoration: none; font-weight: 600; }
 
-    /* SECCION DE CONTACTO EN 2 COLUMNAS PERFECTAS */
-    .contact-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 5%; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .stats { display: flex; gap: 50px; }
+    .stat-item h3 { font-size: 2rem; font-weight: 800; color: #fff; }
+    .stat-item p { font-size: 0.85rem; color: #64748b; }
 
-    .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-    .contact-form { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    .section-title { padding: 60px 8% 20px 8%; max-width: 1200px; margin: 0 auto; }
+    .section-title span { color: #a855f7; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+    .section-title h2 { font-size: 2.2rem; margin-top: 5px; }
+
+    /* SECCION CONTACTO - FIX EN 2 COLUMNAS SIMETRICAS */
+    .contact-container { max-width: 1200px; margin: 0 auto; padding: 40px 8% 80px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+    .contact-form { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); }
     
     .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 5px; color: #cbd5e1; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff; box-sizing: border-box; }
+    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: #cbd5e1; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.4); color: #fff; box-sizing: border-box; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-    footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 30px 5%; border-top: 1px solid rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; gap: 20px; }
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 30px 8%; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.85rem; }
 
-    /* REGLA PARA MOVILES PANTALLA PEQUEÑA */
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; }
+    @media (max-width: 850px) {
+      .contact-container { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="flogo">
-      <img src="Perfil.jpg" alt="Logo" onerror="this.style.display='none'">
-      <span>IA SOLUCIONES INTELIGENTES</span>
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="#a855f7" stroke-width="4" fill="none"/>
+        <circle cx="50" cy="50" r="12" fill="#eab308"/>
+        <circle cx="50" cy="25" r="5" fill="#38bdf8"/><circle cx="72" cy="38" r="5" fill="#38bdf8"/>
+        <circle cx="72" cy="62" r="5" fill="#38bdf8"/><circle cx="50" cy="75" r="5" fill="#38bdf8"/>
+        <circle cx="28" cy="62" r="5" fill="#38bdf8"/><circle cx="28" cy="38" r="5" fill="#38bdf8"/>
+      </svg>
+      <div>
+        <div>IA SOLUCIONES</div>
+        <div style="font-size: 0.65rem; color: #eab308; letter-spacing: 2px;">INTELIGENTES</div>
+      </div>
     </div>
     <div class="flinks">
       <a href="#servicios">Servicios</a>
@@ -56,106 +74,107 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero-text">
-      <span style="color: #a855f7; font-weight: 600; text-transform: uppercase;">◆ Transformación Digital</span>
-      <h1>Tu PYME,<br>lista para el <span style="color: #38bdf8;">mundo digital</span></h1>
-      <p>Consultoría de transformación digital en Valencia. Ayudamos a PYMES y autónomos a crecer con marketing digital, redes sociales e inteligencia artificial. Primera consulta gratuita.</p>
+    <div class="hero-tag">◆ TRANSFORMACIÓN DIGITAL</div>
+    <h1>Tu PYME,<br>lista para el <span>mundo digital</span></h1>
+    <p>Consultoría de transformación digital en Valencia. Ayudamos a PYMES y autónomos a crecer con marketing digital, redes sociales e inteligencia artificial. Primera consulta gratuita.</p>
+    
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-purple">Consulta gratuita →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
     </div>
-    <div class="hero-img">
-      <img src="Perfil.jpg" alt="Perfil IA Soluciones">
+
+    <div class="stats">
+      <div class="stat-item"><h3>100%</h3><p>Personalizado</p></div>
+      <div class="stat-item"><h3>0€</h3><p>Primera consulta</p></div>
+      <div class="stat-item"><h3>ESP+LAT</h3><p>Alcance global</p></div>
     </div>
   </section>
 
-  <!-- CONTACTO EN 2 COLUMNAS BALANCEADAS -->
-  <section id="contacto">
-    <div class="contact-wrapper">
-      <div class="contact-grid">
-        
-        <!-- COLUMNA 1: CONTACTO -->
-        <div class="contact-info">
-          <span style="color: #a855f7; font-weight: 600; text-transform: uppercase;">HABLEMOS</span>
-          <h2 style="font-size: 2.2rem; margin: 10px 0 20px 0;">¿Empezamos juntos?</h2>
-          <p style="color: #cbd5e1; margin-bottom: 30px;">
-            La primera consulta es <strong style="color: #c084fc;">completamente gratuita</strong>. En menos de 24 horas tendrás una propuesta personalizada para tu negocio.
-          </p>
+  <div class="section-title" id="contacto">
+    <span>HABLEMOS</span>
+    <h2>¿Empezamos juntos?</h2>
+  </div>
 
-          <div class="card">
-            <span style="font-size: 1.2rem;">📞</span>
-            <div>
-              <div style="font-size: 0.75rem; color: #94a3b8;">Teléfono / WhatsApp</div>
-              <div style="font-weight: 600;">677 330 035</div>
-            </div>
-          </div>
+  <section class="contact-container">
+    <div class="contact-info">
+      <p style="color: #cbd5e1; margin-bottom: 25px;">
+        La primera consulta es <strong style="color: #c084fc;">completamente gratuita</strong>. En menos de 24 horas tendrás una propuesta personalizada para tu negocio.
+      </p>
 
-          <div class="card">
-            <span style="font-size: 1.2rem;">✉️</span>
-            <div>
-              <div style="font-size: 0.75rem; color: #94a3b8;">Email</div>
-              <div style="font-weight: 600;">info@iasolucionesinteligentes.es</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <span style="font-size: 1.2rem;">📍</span>
-            <div>
-              <div style="font-size: 0.75rem; color: #94a3b8;">Ubicación</div>
-              <div style="font-weight: 600;">Valencia, España</div>
-            </div>
-          </div>
+      <div class="card">
+        <span style="font-size: 1.2rem;">📞</span>
+        <div>
+          <div style="font-size: 0.75rem; color: #94a3b8;">Teléfono / WhatsApp</div>
+          <div style="font-weight: 600;">677 330 035</div>
         </div>
+      </div>
 
-        <!-- COLUMNA 2: FORMULARIO -->
-        <form class="contact-form" action="https://formspree.io/f/xaewlpoz" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nombre *</label>
-              <input type="text" name="nombre" placeholder="Tu nombre" required>
-            </div>
-            <div class="form-group">
-              <label>Email *</label>
-              <input type="email" name="email" placeholder="Tu correo electrónico" required>
-            </div>
-          </div>
+      <div class="card">
+        <span style="font-size: 1.2rem;">✉️</span>
+        <div>
+          <div style="font-size: 0.75rem; color: #94a3b8;">Email</div>
+          <div style="font-weight: 600;">info@iasolucionesinteligentes.es</div>
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label>Empresa</label>
-            <input type="text" name="empresa" placeholder="Tu empresa o negocio">
-          </div>
-
-          <div class="form-group">
-            <label>Servicio de interés</label>
-            <select name="servicio" required>
-              <option value="" disabled selected>Selecciona un servicio</option>
-              <option value="Consultoría Digital">Consultoría Digital</option>
-              <option value="Gestión de Redes Sociales">Gestión de Redes Sociales</option>
-              <option value="Marketing Digital">Marketing Digital</option>
-              <option value="Pack Visibilidad Online">Pack Visibilidad Online</option>
-              <option value="Proyecto Integral PYME">Proyecto Integral PYME</option>
-              <option value="Formación Empresarial">Formación Empresarial</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Mensaje *</label>
-            <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" style="width:100%; padding:14px; border-radius:30px; background:linear-gradient(90deg, #a855f7, #6366f1); color:#fff; border:none; font-weight:600; cursor:pointer;">Enviar mensaje →</button>
-        </form>
-
+      <div class="card">
+        <span style="font-size: 1.2rem;">📍</span>
+        <div>
+          <div style="font-size: 0.75rem; color: #94a3b8;">Ubicación</div>
+          <div style="font-weight: 600;">Valencia, España</div>
+        </div>
       </div>
     </div>
+
+    <form class="contact-form" action="https://formspree.io/f/xaewlpoz" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre *</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Empresa</label>
+        <input type="text" name="empresa" placeholder="Tu empresa o negocio">
+      </div>
+
+      <div class="form-group">
+        <label>Servicio de interés</label>
+        <select name="servicio" required>
+          <option value="" disabled selected>Selecciona un servicio</option>
+          <option value="Consultoría Digital">Consultoría Digital</option>
+          <option value="Gestión de Redes Sociales">Gestión de Redes Sociales</option>
+          <option value="Marketing Digital">Marketing Digital</option>
+          <option value="Pack Visibilidad Online">Pack Visibilidad Online</option>
+          <option value="Proyecto Integral PYME">Proyecto Integral PYME</option>
+          <option value="Formación Empresarial">Formación Empresarial</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje *</label>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
+      </div>
+
+      <button type="submit" style="width:100%; padding:14px; border-radius:30px; background:linear-gradient(90deg, #a855f7, #6366f1); color:#fff; border:none; font-weight:600; cursor:pointer;">Enviar mensaje →</button>
+    </form>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="flogo">
-      <img src="Perfil.jpg" alt="Logo" onerror="this.style.display='none'">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:24px; height:24px;">
+        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="#a855f7" stroke-width="4" fill="none"/>
+        <circle cx="50" cy="50" r="12" fill="#eab308"/>
+      </svg>
       <span>IA Soluciones Inteligentes</span>
     </div>
-    <p>© 2026 IA Soluciones Inteligentes · Consultoría Transformación Digital · Valencia, España</p>
+    <p>© 2026 IA Soluciones Inteligentes · Valencia, España</p>
   </footer>
 
 </body>
